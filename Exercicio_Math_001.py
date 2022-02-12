@@ -1,15 +1,17 @@
 universo = list()
 resposta = list()
+temp = list()
 
 # PARTE DO PROGRAMA QUE GERA O UNIVERSO COM 1000 NÚMEROS DE 1 A 9.
 seletor_001 = 0
-for contador_001 in range(1, 1001):
+for contador_001 in range(1, 4001):
 	seletor_001 = seletor_001 + 1
 	if 1 <= seletor_001 <= 9:
 		universo.append(seletor_001)
 	elif seletor_001 >= 10 :
 		seletor_001 = 1
 		universo.append(seletor_001)
+
 
 # PARTE DO PROGRAMA QUE ORGANIZA A QUANTIDADE DE ITENS DO UNIVERSO NA TELA.
 numero_linha = 0
@@ -34,7 +36,7 @@ print(f"Número de colunas : {numero_coluna}\n")
 controlador = 0
 for linha in range (1, numero_linha+1):
 	for coluna in range (1, numero_coluna+1):
-		if controlador < len(universo) :
+		if controlador < len(universo) : # Aqui é verificado se ainda existem valores a serem exibidos.
 			print(universo[controlador],end=" ")
 			controlador = controlador + 1
 		else:
@@ -44,9 +46,12 @@ for linha in range (1, numero_linha+1):
 
 # PARTE DO PROGRAMA QUE GERA A TABELA FINAL DE VALORES DO UNIVERSO.
 seletor_002 = 0
+seletor_003 = 1
 for contador_002 in range(1, 1001):
 	seletor_002 = universo[seletor_002]
-	print("Passo --->",contador_002,end="")
-	print("\tNúmero :\033[1;34m",seletor_002,"\033[m")
+	print("{:^8}{:^5}".format("Passo :",contador_002),end="")
+	print("{:^10}\033[1;34m{:^3}\033[m".format("Número :",seletor_002),end="")
+	print("{:^30}\033[1;35m{:^5}\033[m".format("Correspondente no universo :",seletor_003))
 	resposta.append(seletor_002)
 	seletor_002 = seletor_002 + 3
+	seletor_003 = seletor_003 + 4
