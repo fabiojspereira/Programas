@@ -52,3 +52,4 @@ for contador_002 in range(1, 1001):
 	#print("\tUniverso :",universo[contador_002-1])
 	resposta.append(seletor_002)
 	seletor_002 = seletor_002 + 3
+	
