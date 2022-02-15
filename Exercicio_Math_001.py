@@ -1,9 +1,8 @@
 universo = list()
-resposta = list()
 
-# PARTE DO PROGRAMA QUE GERA O UNIVERSO COM 1000 NÚMEROS DE 1 A 9.
 quantidade_repeat = int(input("Digite a quantidade de repetições : "))
 
+# PARTE DO PROGRAMA QUE GERA O UNIVERSO COM 1000 NÚMEROS DE 1 A 9.
 seletor_001 = 0
 for contador_001 in range(1, 10001):  # Valor que define o tamanho do universo.
 	seletor_001 = seletor_001 + 1
@@ -58,7 +57,7 @@ for linha in range(1, numero_linha + 1):
 					controlador_001 = controlador_001 + 1
 
 		if check_numero_final == quantidade_repeat:
-			print("\033[1;32mEND\033[m",end="")
+			print("\033[7;30;42m<-RESULTADO\033[m")
 
 print("\n")
 print("{:<32}{:^5}{:<2}".format("\033[1;33mRepetições solicitadas",":\033[m",quantidade_repeat))
