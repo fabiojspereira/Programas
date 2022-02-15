@@ -1,57 +1,66 @@
 universo = list()
 resposta = list()
-temp = list()
 
 # PARTE DO PROGRAMA QUE GERA O UNIVERSO COM 1000 NÚMEROS DE 1 A 9.
+quantidade_repeat = int(input("Digite a quantidade de repetições : "))
+
 seletor_001 = 0
-for contador_001 in range(1, 4001):
+for contador_001 in range(1, 10001):  # Valor que define o tamanho do universo.
 	seletor_001 = seletor_001 + 1
 	if 1 <= seletor_001 <= 9:
 		universo.append(seletor_001)
-	elif seletor_001 >= 10 :
+	elif seletor_001 >= 10:
 		seletor_001 = 1
 		universo.append(seletor_001)
 
-
 # PARTE DO PROGRAMA QUE ORGANIZA A QUANTIDADE DE ITENS DO UNIVERSO NA TELA.
 numero_linha = 0
-if len(universo) <= 30:
+if len(universo) <= 9:
 	numero_linha = 1
-else :
-	numero_linha = len(universo) // 30
-	if ( len(universo) % 30 ) > 0:
+else:
+	numero_linha = len(universo) // 9
+	if (len(universo) % 9) > 0:
 		numero_linha = numero_linha + 1
 numero_coluna = 0
-if len(universo) <= 30:
+if len(universo) <= 9:
 	numero_coluna = len(universo)
 else:
-	numero_coluna = 30
-
-# PARTE DO PROGRAMA QUE FAZ A EXIBIÇÃO DE INFORMAÇÕENS BÁSICAS.
-print(f"\nUniverso : {len(universo)} itens")
-print(f"Número de linhas : {numero_linha}")
-print(f"Número de colunas : {numero_coluna}\n")
+	numero_coluna = 9
 
 # PARTE DO PROGRAMA QUE GERA A GRADE DE VALORES DO UNIVERSO.
-controlador = 0
-for linha in range (1, numero_linha+1):
-	for coluna in range (1, numero_coluna+1):
-		if controlador < len(universo) : # Aqui é verificado se ainda existem valores a serem exibidos.
-			print(universo[controlador],end=" ")
-			controlador = controlador + 1
-		else:
-			print("\033[1;31mSem mais itens !\033[m")
-			break
-	print()
+controlador_001 = 0  # Responsável por imprimir os valores da lista universo.
+controlador_002 = 4  # Responsável por selecionar os valores selecionados.
+check_numero_final = 0  # Contador que soma a quantidade de saltos.
 
-# PARTE DO PROGRAMA QUE GERA A TABELA FINAL DE VALORES DO UNIVERSO.
-seletor_002 = 0
-seletor_003 = 1
-for contador_002 in range(1, 1001):
-	seletor_002 = universo[seletor_002]
-	print("{:^8}{:^5}".format("Passo :",contador_002),end="")
-	print("{:^10}\033[1;34m{:^3}\033[m".format("Número :",seletor_002),end="")
-	print("{:^30}\033[1;35m{:^5}\033[m".format("Correspondente no universo :",seletor_003))
-	resposta.append(seletor_002)
-	seletor_002 = seletor_002 + 3
-	seletor_003 = seletor_003 + 4
+for linha in range(1, numero_linha + 1):
+	if check_numero_final == quantidade_repeat:
+		break
+
+	else:
+		print("\n{:<10}{:<3}{:^3}".format("\033[1;35mLoop \033[m",linha,"\033[1;32m : \033[m"), end="")  # Para um melhor entendimento da resolução.
+		for coluna in range(1, numero_coluna + 1):
+			if controlador_001 <= len(universo):  # Verifica se ainda existem valores a serem exibidos.
+				if check_numero_final == quantidade_repeat:
+					#print("\033[1;31mEND\033[m")
+					break
+
+				else:
+					if universo[controlador_001] == universo[controlador_002]:
+						print("{}{:<2}{}".format("\033[1;34;40m",universo[controlador_001],"\033[m"), end="")
+						controlador_002 = universo[controlador_002]
+						controlador_002 = controlador_002 + 3
+						check_numero_final = check_numero_final + 1
+
+					else:
+						print(universo[controlador_001], end=" ")  # Responsável por imprimir os valores da lista universo.
+						if check_numero_final == quantidade_repeat:
+							break
+					controlador_001 = controlador_001 + 1
+
+		if check_numero_final == quantidade_repeat:
+			print("\033[1;32mEND\033[m",end="")
+
+print("\n")
+print("{:<32}{:^5}{:<2}".format("\033[1;33mRepetições solicitadas",":\033[m",quantidade_repeat))
+print("{:<32}{:^5}{:<2}".format("\033[1;33mÚltimo número descoberto",":\033[m",universo[controlador_002-4]))
+print("{:<32}{:^5}{:<2}".format("\033[1;33mUniverso pré carregado",":\033[m",len(universo)))
