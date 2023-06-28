@@ -1,11 +1,11 @@
 from time import sleep
 
 print("*" * 41)
-print("{:^51}".format("BEM VINDO AO JOGO DA FORCA v1.0"))
+print("{:^41}".format("BEM VINDO AO JOGO DA FORCA v1.0"))
 print("*" * 41)
 print()
 
-palavra_secreta = "paralelepipedo"
+palavra_secreta = "escola"
 palavra_temporaria = list()
 for letra in palavra_secreta:
 	palavra_temporaria.append("?")

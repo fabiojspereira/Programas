@@ -1,3 +1,7 @@
+import time
+
+start_time = time.time()
+
 universo = list()
 
 quantidade_repeat = int(input("Digite a quantidade de repetições : "))
@@ -67,3 +71,8 @@ print("\n")
 print("{:<32}{:^5}{:<2}".format("\033[1;33mRepetições solicitadas", ":\033[m",quantidade_repeat))
 print("{:<32}{:^5}{}{:<1}{}".format("\033[1;33mÚltimo número descoberto", ":\033[m", "\033[7;30;42m", universo[controlador_002-4], "\033[m"))
 print("{:<32}{:^5}{:<2}".format("\033[1;33mUniverso pré carregado", ":\033[m", len(universo)))
+
+end_time = time.time()
+execution_time = end_time - start_time
+
+print("Tempo de execução: {:.2f} segundos".format(execution_time))
