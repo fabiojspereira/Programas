@@ -13,7 +13,7 @@ while continua_001 == True:
         break
 
     for contador in range(INICIAL, FINAL):
-        print(f"\ncontador atual : {contador+1}")
+        #print(f"\ncontador atual : {contador+1}")
         n = str(input(f"Digite um número para ser inserido no {contador+1}º espaço : "))
 
         # VERIFICAÇÃO SE É UM NUMÉRICO DIGITADO
@@ -21,14 +21,14 @@ while continua_001 == True:
             # CASO O ÍNDICE ESTEJA VAZIO, PODERA SER PREENCHIDO. CASO CONTRÁRIO SERÁ NOTIFICADO
             if numeros[contador] == "VAZIO":
                 numeros[contador] = n
-                print(f"Lista atualizada : {numeros}")
+                print(f"Lista atualizada : {numeros}\n")
                 continua_001 = True
             else:
                 print(f"Este espaço já foi preenchido com o valor {numeros[contador]} e não pode ser modificado. ")
 
         else:
             print("ERROR ! Tente novamente !")
-            print(f"Lista atualizada : {numeros}")
+            print(f"Lista atual : {numeros}\n")
             INICIAL = contador
             continua_001 = True
             break
